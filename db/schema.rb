@@ -11,13 +11,74 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140504041258) do
+ActiveRecord::Schema.define(version: 20140504061321) do
+
+  create_table "candidate_elements", force: true do |t|
+    t.integer  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "candidate_sources", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "candidates", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email_address"
     t.string   "phone_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "email"
+    t.string   "preferred_name"
+  end
+
+  create_table "elements", force: true do |t|
+    t.string   "name"
+    t.integer  "order"
+    t.integer  "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "employer_records", force: true do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "group"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "employers", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "recruiting_processes", force: true do |t|
+    t.string   "name"
+    t.date     "target_end_date"
+    t.string   "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "school_records", force: true do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "department"
+    t.string   "degree"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "schools", force: true do |t|
+    t.string   "name"
+    t.string   "country"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
