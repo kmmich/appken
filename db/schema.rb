@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140504070721) do
+ActiveRecord::Schema.define(version: 20140504181958) do
+
+  create_table "campaigns", force: true do |t|
+    t.string   "name"
+    t.date     "target_end_date"
+    t.string   "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "active"
+  end
 
   create_table "candidate_elements", force: true do |t|
     t.integer  "status"
@@ -50,18 +59,12 @@ ActiveRecord::Schema.define(version: 20140504070721) do
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "candidate_id"
+    t.integer  "employer_id"
   end
 
   create_table "employers", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "recruiting_processes", force: true do |t|
-    t.string   "name"
-    t.date     "target_end_date"
-    t.string   "position"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

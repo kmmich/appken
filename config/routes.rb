@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+  get 'campaigns/new'
+
+  get 'campaigns/create'
+
   resources :candidates
+  resources :campaigns
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

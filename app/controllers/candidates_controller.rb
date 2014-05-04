@@ -16,6 +16,14 @@ class CandidatesController < ApplicationController
   # GET /candidates/new
   def new
     @candidate = Candidate.new
+    @employer_record = @candidate.employer_records.new
+    @employer_options = Employer.all.map{|e| [e.name, e.id]}
+    @month_options = [['January', 1],['February', 2],['March', 3],['April', 4],['May', 5],['June', 6],['July', 7],['August', 8],['September', 9],['October', 10],['November', 11],['December', 12]]
+
+    current_year = Time.new.year
+    @start_year_options = [[current_year,current_year],[current_year-1,current_year-1]]
+    @end_year_options = [[current_year,current_year],[current_year+1,current_year+1],[current_year+2,current_year+2]]
+  
   end
 
   # GET /candidates/1/edit
@@ -26,8 +34,9 @@ class CandidatesController < ApplicationController
   # POST /candidates.json
   def create
     @candidate = Candidate.new(candidate_params)
-    #@candidate.EmployerRecord = EmployerRecord.new(candidate_params)
+    @employer_record = @candidate.employer_records.new(employer_record_params)
     @candidate.save
+    @employer_record.save
     redirect_to @candidate
   end
 
@@ -63,6 +72,10 @@ class CandidatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def candidate_params
-      params.require(:candidate).permit(:first_name, :last_name, :email_address, :phone_number)
+      params.require(:candidate).permit(:first_name, :last_name, :preferred_name, :email_address, :phone_number)
+    end
+
+    def employer_record_params
+      params.require(:employer_record).permit(:employer_id, :title, :start_date)
     end
 end

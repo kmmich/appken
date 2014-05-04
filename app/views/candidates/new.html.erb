@@ -1,4 +1,4 @@
-<h1>New candidate</h1>
+<h1>Add a new candidate</h1>
 <hr>
 
 
@@ -14,7 +14,6 @@
       </ul>
     </div>
   <% end %>
-
 
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -64,26 +63,28 @@
       <h3 class="panel-title">Work Experience</h3>
     </div>
     <div class="panel-body">
-	    <div class="row">
-	      <div class="col-sm-4">
-		    <%= f.label :Company %><br>
-		    <%= f.text_field :we_company %>
-		  </div>
-		  <div class="col-sm-4">
-		    <%= f.label :Title %><br>
-		    <%= f.text_field :we_title %>
-		  </div>
-		  <div class="col-sm-4">
-		    <%= f.label :StartDate %><br>
-		    <%= f.text_field :we_start_month %>
-		    <%= f.text_field :we_start_year %>
-		  </div>
-		  <div class="col-sm-4">
-		    <%= f.label :EndDate %><br>
-		    <%= f.text_field :we_end_month %>
-		    <%= f.text_field :we_end_year %>
-		  </div>
-	    </div>
+    	<%= fields_for @employer_record do |we| %>
+		    <div class="row">
+		      <div class="col-sm-4">
+			    <%= we.label :employer_id %><br>
+			     <%= we.select(:employer_id, options_for_select(@employer_options)) %>
+			  </div>
+			  <div class="col-sm-4">
+			    <%= we.label :title %><br>
+			    <%= we.text_field :title %>
+			  </div>
+			  <div class="col-sm-4">
+			    <%= we.label :StartDate %><br>
+			    <%= we.select(:start_date, options_for_select(@month_options)) %>
+			    <%= we.select(:start_date, options_for_select(@start_year_options)) %>
+			  </div>
+			  <div class="col-sm-4">
+			    <%= we.label :EndDate %><br>
+			    <%= we.select(:start_date, options_for_select(@month_options)) %>
+			    <%= we.select(:start_date, options_for_select(@end_year_options)) %>
+			  </div>
+		    </div>
+	    <% end %>
     </div>
   </div>
 
@@ -99,7 +100,7 @@
   <div class="actions submit row">
     <%= link_to 'Back', candidates_path %> 
     &nbsp; &nbsp;
-    <%= f.submit 'Create Candidate', :class => 'btn btn-primary' %>
+    <%= f.submit 'Add Candidate', :class => 'btn btn-primary' %>
   </div>
 <% end %>
 
