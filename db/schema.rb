@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140504061321) do
+ActiveRecord::Schema.define(version: 20140504070721) do
 
   create_table "candidate_elements", force: true do |t|
     t.integer  "status"
@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 20140504061321) do
     t.string   "phone_number"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email"
     t.string   "preferred_name"
   end
 

@@ -47,8 +47,8 @@
 	    <div class="row">
 	      <div class="col-sm-4">
 	      	<br>
-		    <%= f.label :email %><br>
-		    <%= f.text_field :email %>
+		    <%= f.label :email_address %><br>
+		    <%= f.text_field :email_address %>
 		  </div>
 		  <div class="col-sm-4">
 		  	<br>
@@ -64,7 +64,26 @@
       <h3 class="panel-title">Work Experience</h3>
     </div>
     <div class="panel-body">
-      Panel content
+	    <div class="row">
+	      <div class="col-sm-4">
+		    <%= f.label :Company %><br>
+		    <%= f.text_field :we_company %>
+		  </div>
+		  <div class="col-sm-4">
+		    <%= f.label :Title %><br>
+		    <%= f.text_field :we_title %>
+		  </div>
+		  <div class="col-sm-4">
+		    <%= f.label :StartDate %><br>
+		    <%= f.text_field :we_start_month %>
+		    <%= f.text_field :we_start_year %>
+		  </div>
+		  <div class="col-sm-4">
+		    <%= f.label :EndDate %><br>
+		    <%= f.text_field :we_end_month %>
+		    <%= f.text_field :we_end_year %>
+		  </div>
+	    </div>
     </div>
   </div>
 
