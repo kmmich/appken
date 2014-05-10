@@ -37,6 +37,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'tzinfo-data'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'sprockets', '2.11.0'
+gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 
 
 group :development, :test do

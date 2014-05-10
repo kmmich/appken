@@ -17,3 +17,5 @@
 *= require bootstrap.min
 *= require bootstrap-theme
 *= require bootstrap-theme.min
+*= require dataTables/jquery.dataTables
+*= require dataTables/jquery.dataTables.bootstrap3

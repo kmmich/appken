@@ -13,6 +13,10 @@ class CampaignsController < ApplicationController
     @campaign.save
   end
 
+  def show
+    @campaign = Campaign.find(params[:id])
+  end
+
   private
     def campaign_params
       params.require(:campaign).permit(:name, :position, elements_attributes: [ :name])

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get 'campaigns/new'
-
   get 'campaigns/create'
 
   resources :candidates
