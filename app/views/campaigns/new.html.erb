@@ -12,10 +12,6 @@
 		    <%= f.text_field :name %>
 		  </div>
 		  <div class="col-sm-4">
-		    <%= f.label :target_end_date %><br>
-		    <%= f.text_field :target_end_date %>
-		  </div>
-		  <div class="col-sm-4">
 		    <%= f.label :position %><br>
 		    <%= f.text_field :position %>
 		  </div>
@@ -28,7 +24,7 @@
       <h3 class="panel-title">Steps in the recruiting process</h3>
     </div>
     <div class="panel-body">
-    	<%= fields_for @elements do |builder| %>
+    	<%= f.fields_for :elements do |builder| %>
     		<%= render 'element_fields', f: builder %>
 	    <% end %>
 	    <%= link_to_add_fields "Add Field", f, :elements %>

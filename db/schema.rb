@@ -11,11 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140504195211) do
+ActiveRecord::Schema.define(version: 20140507033550) do
 
   create_table "campaigns", force: true do |t|
     t.string   "name"
-    t.date     "target_end_date"
     t.string   "position"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -41,7 +40,6 @@ ActiveRecord::Schema.define(version: 20140504195211) do
     t.string   "phone_number"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "preferred_name"
   end
 
   create_table "elements", force: true do |t|
