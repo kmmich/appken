@@ -10,6 +10,8 @@ class CandidatesController < ApplicationController
   # GET /candidates/1.json
   def show
     @candidate = Candidate.find(params[:id])
+    @candidate_campaign = @candidate.candidate_campaigns.build
+    @campaign_options = Campaign.all.map{|e| [e.name, e.id]}
   end
 
   # GET /candidates/new

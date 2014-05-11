@@ -19,7 +19,16 @@
         </tr>
       </thead>
       <tbody>
-       
+        <% @campaign.candidates.each do |candidate| %>
+          <tr>
+            <td><%= candidate.first_name + ' ' + candidate.last_name %></td>
+            <td>Status: <%= candidate.candidate_campaigns.where(:campaign_id=> @campaign.id).first.candidate_status %></td>
+            <% @campaign.elements.each do |campaign_element|
+                can_element = CandidateElement.where(:candidate_id=>candidate.id).where(:element_id => campaign_element.id).first %>
+                <td>CE <%= can_element.id %></td>
+            <% end %>
+          </tr>
+        <% end %>
       </tbody>
     </table>
  </div>

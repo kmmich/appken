@@ -20,5 +20,14 @@
   <%= @candidate.phone_number %>
 </p>
 
+<%= form_for(@candidate_campaign) do |f| %>
+   <div class="actions submit row">
+    <%= f.select(:campaign_id, options_for_select(@campaign_options)) %>
+    <%= f.hidden_field :passed_candidate_id, :value => @candidate.id %>
+    <%= f.submit 'Assign candidate', :class => 'btn btn-primary' %>
+  </div>
+<% end %>
+
+
 <%= link_to 'Edit', edit_candidate_path(@candidate) %> |
 <%= link_to 'Back', candidates_path %>

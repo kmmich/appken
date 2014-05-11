@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  resources :users
+
   get 'campaigns/new'
   get 'campaigns/create'
 
   resources :candidates
+  resources :candidate_campaigns, only: [:create, :destroy]
   resources :campaigns
 
   # The priority is based upon order of creation: first created -> highest priority.
