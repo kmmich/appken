@@ -15,15 +15,14 @@ class CampaignsController < ApplicationController
 
   def show
     @campaign = Campaign.find(params[:id])
-    @can = Candidate.find(1)
+    @modal_candidate_campaign = @campaign.candidate_campaigns.first
   end
 
   def show_candidate_modal
-    @can = Candidate.find(params[:id])
+    @modal_candidate_campaign = CandidateCampaign.find(params[:id])
 
     respond_to do |format|
       format.js { render :candidate_modal }
-      format.html
     end
   end
 

@@ -11,23 +11,104 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Resume Upload</h3>
+    </div>
+    <div class="panel-body">
+      Panel content
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">The Basics</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-6">
+        <%= f.label :first_name %><br>
+        <%= f.text_field :first_name, :class => 'form-control' %>
+      </div>
+      <div class="col-sm-6">
+        <%= f.label :last_name %><br>
+        <%= f.text_field :last_name, :class => 'form-control'  %>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <br>
+        <%= f.label :email_address %><br>
+        <%= f.text_field :email_address, :class => 'form-control'  %>
+      </div>
+      <div class="col-sm-6">
+        <br>
+        <%= f.label :phone_number %><br>
+        <%= f.text_field :phone_number, :class => 'form-control'  %>
+      </div>
+      </div>
   </div>
-  <div class="field">
-    <%= f.label :email_address %><br>
-    <%= f.text_field :email_address %>
   </div>
-  <div class="field">
-    <%= f.label :phone_number %><br>
-    <%= f.text_field :phone_number %>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Work Experience</h3>
+    </div>
+    <div class="panel-body">
+      <%= fields_for @employer_record do |we| %>
+        <div class="row">
+          <div class="col-sm-4">
+          <%= we.label :employer_id %><br>
+           <%= we.select(:employer_id, options_for_select(@employer_options), {},  {:class => 'form-control'} ) %>
+        </div>
+        <div class="col-sm-4">
+          <%= we.label :title %><br>
+          <%= we.text_field :title, :class => 'form-control', placeholder: 'e.g. Business Analyst'  %>
+        </div>
+        <div class="col-sm-2">
+          <%= we.label :StartDate %><br>
+          <%= we.select(:start_date, options_for_select(@start_year_options), {},  {:class => 'form-control'} ) %>
+        </div>
+        <div class="col-sm-2">
+          <%= we.label :EndDate %><br>
+          <%= we.select(:start_date, options_for_select(@end_year_options), {},  {:class => 'form-control'} ) %>
+        </div>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Education</h3>
+    </div>
+    <div class="panel-body">
+      <%= fields_for @school_record do |sr| %>
+        <div class="row">
+          <div class="col-sm-4">
+          <%= sr.label :school_id %><br>
+           <%= sr.select(:school_id, options_for_select(@school_options), {},  {:class => 'form-control'} ) %>
+        </div>
+        <div class="col-sm-4">
+          <%= sr.label :degree %><br>
+          <%= sr.text_field :degree, :class => 'form-control', placeholder: 'e.g. MBA'  %>
+        </div>
+        <div class="col-sm-2">
+          <%= sr.label :StartDate %><br>
+          <%= sr.select(:start_date, options_for_select(@start_year_options), {},  {:class => 'form-control'} ) %>
+        </div>
+        <div class="col-sm-2">
+          <%= sr.label :EndDate %><br>
+          <%= sr.select(:start_date, options_for_select(@end_year_options), {},  {:class => 'form-control'} ) %>
+        </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="actions submit row">
+    <%= link_to 'Back', candidates_path %> 
+    &nbsp; &nbsp;
+    <%= f.submit 'Add Candidate', :class => 'btn btn-primary' %>
   </div>
 <% end %>

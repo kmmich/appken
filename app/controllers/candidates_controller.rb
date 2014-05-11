@@ -19,7 +19,8 @@ class CandidatesController < ApplicationController
     @candidate = Candidate.new
     @employer_record = @candidate.employer_records.new
     @employer_options = Employer.all.map{|e| [e.name, e.id]}
-    @month_options = [['January', 1],['February', 2],['March', 3],['April', 4],['May', 5],['June', 6],['July', 7],['August', 8],['September', 9],['October', 10],['November', 11],['December', 12]]
+    @school_record = @candidate.school_records.new
+    @school_options = School.all.map{|e| [e.name, e.id]}
 
     current_year = Time.new.year
     @start_year_options = [[current_year,current_year],[current_year-1,current_year-1]]
@@ -29,6 +30,26 @@ class CandidatesController < ApplicationController
 
   # GET /candidates/1/edit
   def edit
+    @candidate = Candidate.find(params[:id])
+    
+
+    @employer_record = @candidate.employer_records.first
+    if @employer_record.nil?
+      @employer_record = @candidate.employer_records.new
+    end
+
+    @school_record = @candidate.school_records.first
+    if @school_record.nil?
+      @school_record = @candidate.school_records.new
+    end
+
+    @employer_options = Employer.all.map{|e| [e.name, e.id]}
+    @school_options = School.all.map{|e| [e.name, e.id]}
+
+    current_year = Time.new.year
+    @start_year_options = [[current_year,current_year],[current_year-1,current_year-1]]
+    @end_year_options = [[current_year,current_year],[current_year+1,current_year+1],[current_year+2,current_year+2]]
+
   end
 
   # POST /candidates

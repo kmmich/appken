@@ -1,9 +1,34 @@
+<%
+  modal_candidate = Candidate.find(modal_candidate_campaign.candidate_id)
+  modal_campaign = Campaign.find(modal_candidate_campaign.campaign_id)
+%>
+
 <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-  <h4 class="modal-title" id="myModalLabel"><%= can.first_name + ' ' + can.last_name %></h4>
+  <h4 class="modal-title" id="myModalLabel"><%= modal_candidate.first_name + ' ' + modal_candidate.last_name %></h4>
 </div>
 <div class="modal-body">
-  <%= can.id %>
+  
+<table class="table table-striped table-bordered" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th>Stage</th>
+      <th>Status</th>
+      <th>Interviewer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% modal_campaign.elements.each do |ce| 
+         can_element = CandidateElement.where(:candidate_id=>modal_candidate.id).where(:element_id => ce.id).first %>
+      <tr>
+        <td><%= ce.name %></td>
+        <td><%= can_element.status %></td>
+        <td><%= ce.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

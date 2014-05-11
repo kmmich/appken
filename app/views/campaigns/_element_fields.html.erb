@@ -1,8 +1,13 @@
 <fieldset>
-<div class="row">
-  <div class="col-sm-4">
-    <%= f.label :name %>: &nbsp; 
-    <%= f.text_field :name %> &nbsp; <%= link_to '[remove]', '#', class: 'remove_fields' %>
+<div class="form_group">
+  <div class="col-sm-1" style="vertical-align:middle;">
+		<%= f.label :name %>
+  </div>
+  <div class="col-sm-9">
+  		<%= f.text_field :name, :class => 'form-control' %>
+  </div>
+  <div class="col-sm-2"> 
+     &nbsp; <%= link_to '[remove]', '#', class: 'remove_fields' %>
   </div>
 </div>
 </fieldset>
