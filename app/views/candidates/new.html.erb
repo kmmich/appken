@@ -30,25 +30,25 @@
     </div>
     <div class="panel-body">
     	<div class="row">
-	      <div class="col-sm-4">
+	      <div class="col-sm-6">
 		    <%= f.label :first_name %><br>
-		    <%= f.text_field :first_name %>
+		    <%= f.text_field :first_name, :class => 'form-control' %>
 		  </div>
-		  <div class="col-sm-4">
+		  <div class="col-sm-6">
 		    <%= f.label :last_name %><br>
-		    <%= f.text_field :last_name %>
+		    <%= f.text_field :last_name, :class => 'form-control'  %>
 		  </div>
 	    </div>
 	    <div class="row">
-	      <div class="col-sm-4">
+	      <div class="col-sm-6">
 	      	<br>
 		    <%= f.label :email_address %><br>
-		    <%= f.text_field :email_address %>
+		    <%= f.text_field :email_address, :class => 'form-control'  %>
 		  </div>
-		  <div class="col-sm-4">
+		  <div class="col-sm-6">
 		  	<br>
 		    <%= f.label :phone_number %><br>
-		    <%= f.text_field :phone_number %>
+		    <%= f.text_field :phone_number, :class => 'form-control'  %>
 		  </div>
 	    </div>
 	</div>
@@ -61,23 +61,23 @@
     <div class="panel-body">
     	<%= fields_for @employer_record do |we| %>
 		    <div class="row">
-		      <div class="col-sm-4">
+		      <div class="col-sm-3">
 			    <%= we.label :employer_id %><br>
-			     <%= we.select(:employer_id, options_for_select(@employer_options)) %>
+			     <%= we.select(:employer_id, options_for_select(@employer_options), {},  {:class => 'form-control'} ) %>
 			  </div>
-			  <div class="col-sm-4">
+			  <div class="col-sm-3">
 			    <%= we.label :title %><br>
-			    <%= we.text_field :title %>
+			    <%= we.text_field :title, :class => 'form-control'  %>
 			  </div>
-			  <div class="col-sm-4">
+			  <div class="col-sm-3">
 			    <%= we.label :StartDate %><br>
-			    <%= we.select(:start_date, options_for_select(@month_options)) %>
-			    <%= we.select(:start_date, options_for_select(@start_year_options)) %>
+			    <%= we.select(:start_date, options_for_select(@month_options), {},  {:class => 'form-control'} ) %>
+			    <%= we.select(:start_date, options_for_select(@start_year_options), {},  {:class => 'form-control'} ) %>
 			  </div>
-			  <div class="col-sm-4">
+			  <div class="col-sm-3">
 			    <%= we.label :EndDate %><br>
-			    <%= we.select(:start_date, options_for_select(@month_options)) %>
-			    <%= we.select(:start_date, options_for_select(@end_year_options)) %>
+			    <%= we.select(:start_date, options_for_select(@month_options), {},  {:class => 'form-control'} ) %>
+			    <%= we.select(:start_date, options_for_select(@end_year_options), {},  {:class => 'form-control'} ) %>
 			  </div>
 		    </div>
 	    <% end %>

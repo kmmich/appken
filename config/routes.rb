@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :candidate_campaigns, only: [:create, :destroy]
   resources :campaigns
 
+
+  get 'campaigns/show_candidate_modal/:id', to: "campaigns#show_candidate_modal", as: :show_candidate_modal
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

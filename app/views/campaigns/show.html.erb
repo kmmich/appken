@@ -1,6 +1,19 @@
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" id="candidate_modal">
+      <%= render "candidate_modal", :can => @can %>
+    </div>
+  </div>
+</div>
+
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+
 <div class="row">
     <div class = "col-md-6" style="vertical-align:middle;">
-        <h1>Campaign</h1>
+        <h1>Campaign: <%= @campaign.name %></h1>
     </div>
     <div class = "col-md-6" style="vertical-align:middle;">
         <%= button_to "Add Candidates", campaigns_path, :class => "btn btn-primary", :method => :get %>
@@ -21,7 +34,10 @@
       <tbody>
         <% @campaign.candidates.each do |candidate| %>
           <tr>
-            <td><%= candidate.first_name + ' ' + candidate.last_name %></td>
+            <td>
+              <%= candidate.first_name + ' ' + candidate.last_name %>
+              <%= link_to 'show modal', show_candidate_modal_path(candidate), :remote=> true, 'data-toggle' => 'modal', 'data-target'=>'#myModal' %>
+            </td>
             <td>Status: <%= candidate.candidate_campaigns.where(:campaign_id=> @campaign.id).first.candidate_status %></td>
             <% @campaign.elements.each do |campaign_element|
                 can_element = CandidateElement.where(:candidate_id=>candidate.id).where(:element_id => campaign_element.id).first %>
